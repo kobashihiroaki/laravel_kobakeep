@@ -1,0 +1,165 @@
+header {
+    border-bottom: 1px solid #eeeeee;
+    height: 90px;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+}
+
+h1 {
+    font-weight: bold;
+    font-size: 40px;
+    color: red; 
+    background-color: #ff66cc;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+main {
+    display: flex;
+}
+
+.sidemenu {
+    width: 260px;
+}
+
+.container {
+    flex: 1;
+    padding: 10px;
+    max-width: 550px; 
+}
+
+.create-area {
+    padding: 10px 0;
+    width: 400px;
+}
+
+.create-memo {
+    display: flex;
+    box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.2);
+    width: 598px;
+    margin: 0 auto;
+    height: 46px;
+    border-radius: 1vh;
+    align-items: center;
+    padding: 0 5px;
+    flex-wrap: wrap;
+}
+
+.create-memo-open {
+    height: 200px;
+    border: solid 1px #000000;
+    border-color: #e0e0e0;
+    border-radius: 1vh;
+    padding: 10px 15px;
+    position: relative;
+}
+
+.create-memo-open:hover {
+    border-color: #000000;
+}
+
+.create-memo-open > .title {
+    display: block;
+}
+
+.create-memo-open > .content-insert {
+    display: block;
+}
+
+.create-memo-open > .close-btn-area {
+    display: block;
+}
+
+.create-memo > textarea {
+    height: 46px;
+    padding-top: 10px;
+    padding-left: 5px;
+} 
+
+.memo-content {
+    margin: 5px;
+    border: solid 1px #000000;
+    border-color: #e0e0e0;
+    min-height: 104px;
+    border-radius: 1vh;
+    padding: 10px 15px;
+}
+
+.memo-content:hover {
+    border-color: #000000;
+}
+
+.list-area {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.side-button {
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 0px 15px 15px 0px / 0px 15px 15px 0px;
+}
+
+.side-button>a {
+    padding-left: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    display: block;
+}
+
+.side-button:hover {
+    background-color: #eeeeee;
+}
+
+.side-button:visited {
+    background-color: #ffffaa;
+}
+
+.title {
+    min-width: 100%;
+    display: none;
+}
+
+.content-insert {
+    text-align: left;
+    background-color: #ff66cc;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: none;
+}
+
+.close-btn-area {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: none;
+}
+
+.memo-close {
+    cursor: pointer;
+    color: #000;
+    line-height: 40px;
+    width: 40px;
+    text-align: center;
+    font-size: 20px;
+    /* display: none; */
+}
+
+.delete-button {
+    background-color: #ff66cc;
+    cursor: pointer;
+}
+
+.update-button {
+    background-color: #008000;
+}
+
+.content {
+    width: 100%;
+    height: 100%;
+    border: none;
+}

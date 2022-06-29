@@ -13,4 +13,4 @@ use App\Http\Controllers\MemoController;
 |
 */
 
-Route::resource('memo', MemoController::class);
+Route::resource('memos', MemoController::class);

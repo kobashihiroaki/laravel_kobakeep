@@ -41,6 +41,8 @@ class MemoController extends Controller
             'content' => 'required', 
         ]);
         Memo::create($request->all());
+        return redirect()->route('memos.index')
+                        ->with('success','Memo created successfully.');
     }
 
     /**
@@ -74,7 +76,13 @@ class MemoController extends Controller
      */
     public function update(Request $request, Memo $memo)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'content' => 'required',
+        ]);
+        $memo->update($request->all());
+        return redirect()->route('memos.index')
+                        ->with('success', 'Memo updated successfully');
     }
 
     /**

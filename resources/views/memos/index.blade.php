@@ -27,23 +27,26 @@
         </div>
         <div class="container">
             <div class="create-area">
-                <div id="create_memo">
-                    <div class="title"><input id="title" type="text" placeholder="タイトル"></div>
-                    <textarea maxlength="150" id="content" class="content" placeholder="メモを入力..."></textarea> 
+                <form id="create_memo" action="{{ route('memos.store') }}" method="POST">
+                    @csrf
+                    <div class="title"><input id="title" name="title" type="text" placeholder="タイトル"></div>
+                    <textarea maxlength="150" id="content" name="content" class="content" placeholder="メモを入力..."></textarea> 
                     <button name="insert" id="content_insert" class="content-insert">登録</button>
                     <div class="close-btn-area">
                         <button name="close" id="memo_close" class="memo-close">×</button>
                     </div>
-                </div>
+                </form>
             </div>
             <div id="list_area" class="list-area">
                 @foreach ($memos as $memo)
-                <div class="memo-content">
-                    <input value="{{ $memo->title }}">
-                    <input value="{{ $memo->content }}">
+                <form class="memo-content" action="{{ route('memos.update',$memo->id) }}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <input value="{{ $memo->title }}" name="title">
+                    <input value="{{ $memo->content }}" name="content">
                     <button class="update-button" value="${data.id}">編集</button>
                     <button class="delete-button" onclick="memoDelete(${data.id})">削除</button>
-                </div>
+                </form>
                 @endforeach
             </div>
         </div>

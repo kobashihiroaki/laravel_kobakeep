@@ -19,32 +19,33 @@ function makeTemplates(contents) {
     listArea.insertAdjacentHTML('afterbegin', templates);
 }
 
+{
+    const REQUEST_URL = "http://localhost:80/kobakeep_api/api/";
+    const data = {list: 'list'};
 
-const REQUEST_URL = "http://localhost:80/kobakeep_api/api/";
+    fetch(REQUEST_URL, {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'action': 'list',
+            'model': 'memo'
+        }
+    })
+    .then (response => {
+        return response.json();
+    })
+    .then (data => {
+        // console.log(data);
+        makeTemplates(data);
+        memoUpdate();
+    })
+    .catch (e => {
+        console.log(e);
+    })
+}
 
-data = {list: 'list'};
-
-fetch(REQUEST_URL, {
-    method: "POST",
-    body: JSON.stringify(data),
-    headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'action': 'list',
-        'model': 'memo'
-    }
-})
-.then (response => {
-    return response.json();
-})
-.then (data => {
-    // console.log(data);
-    makeTemplates(data);
-    memoUpdate();
-})
-.catch (e => {
-    console.log(e);
-})
 
 
 const createMemo = document.getElementById('create_memo');
@@ -61,8 +62,11 @@ createMemo.addEventListener('click', (e) => {
             createMemo.classList.add('create-memo-open');
             break;
     }
-})
+});
 
+createMemo.addEventListener('oninput', (e) => {
+
+}); 
 
 function memoUpdate() {
     document.getElementsByClassName('update-button')[0].addEventListener('click', (e)=> {

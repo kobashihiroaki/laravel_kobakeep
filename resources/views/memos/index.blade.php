@@ -50,15 +50,13 @@
                     </form>
                     <input form="update" value="{{ $memo->title }}" name="title">
                     <input form="update" value="{{ $memo->content }}" name="content">
-                    <button form="update" class="update-button" value="${data.id}">編集</button>
+                    <button form="update" class="update-button">編集</button>
                     <button form="delete" class="delete-button">削除</button>
                 </div>
                 @endforeach
             </div>
         </div>
     </main>
-    <script src="/src/insert.js"></script>
-    <script src="/src/delete.js"></script>
 </body>
 
 @endsection

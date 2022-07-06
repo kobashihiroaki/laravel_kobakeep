@@ -80,10 +80,8 @@ class MemoController extends Controller
             'title' => 'required',
             'content' => 'required',
         ]);
-        $memo = Memo::find($request->id);
-        $memo->title = $request->input('title');
-        $memo->content = $request->input('content');
-        $memo->save();
+        // $memo::where('id',$request->id)->update(['title' => $request->title, 'content' => $request->content]);
+        $memo->update($request->all());
         return redirect()->route('memos.index')
                         ->with('success', 'Memo updated successfully');
     }

@@ -40,18 +40,18 @@
             <div id="list_area" class="list-area">
                 @foreach ($memos as $memo)
                 <div class="memo-content">
-                    <form id="update" action="{{ route('memos.update',$memo->id) }}" method="POST">
+                    <form id="update{{$memo->id}}" action="{{ route('memos.update',$memo->id) }}" method="POST">
                         @csrf   
                         @method('PUT')
                     </form>
-                    <form id="delete" action="{{ route('memos.destroy',$memo->id) }}" method="POST">
+                    <form id="delete{{$memo->id}}" action="{{ route('memos.destroy',$memo->id) }}" method="POST">
                         @csrf
                         @method('DELETE')    
                     </form>
-                    <input form="update" value="{{ $memo->title }}" name="title">
-                    <input form="update" value="{{ $memo->content }}" name="content">
-                    <button form="update" class="update-button">編集</button>
-                    <button form="delete" class="delete-button">削除</button>
+                    <input form="update{{$memo->id}}" value="{{ $memo->title }}" name="title">
+                    <input form="update{{$memo->id}}" value="{{ $memo->content }}" name="content">
+                    <button form="update{{$memo->id}}" class="update-button">編集</button>
+                    <button form="delete{{$memo->id}}" class="delete-button">削除</button>
                 </div>
                 @endforeach
             </div>

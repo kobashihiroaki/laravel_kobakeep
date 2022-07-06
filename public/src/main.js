@@ -33,7 +33,3 @@ createMemo.addEventListener('click', (e) => {
             break;
     }
 });
-
-// createMemo.addEventListener('oninput', (e) => {
-
-// }); 

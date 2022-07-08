@@ -1,6 +1,5 @@
 @extends('memos.layout')
-@section('content')
-
+@section('head')
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,6 +10,8 @@
     <link rel="stylesheet" href="/css/style.css">
     <script defer src="/src/main.js"></script>
 </head>
+@endsection
+@section('content')
 <body>
     <header>
         <a href="./">
@@ -21,7 +22,10 @@
         <div class="sidemenu">
             <ul>
                 <li class="side-button">
-                    <a href="./">メモ</a>
+                    <a href="./memos">メモ</a>
+                </li>
+                <li class="side-button">
+                    <a href="{{ route('trashes.index') }}">ゴミ箱</a>
                 </li>
             </ul>
         </div>
@@ -33,7 +37,7 @@
                     <textarea autofocus maxlength="150" id="content" name="content" class="content" placeholder="メモを入力..."></textarea> 
                     <button name="insert" id="content_insert" class="content-insert">登録</button>
                     <div class="close-btn-area">
-                        <button name="close" id="memo_close" class="memo-close">×</button>
+                        <button name="close" id="memo_close" class="memo-close" type="button">×</button>
                     </div>
                 </form>
             </div>
@@ -58,5 +62,4 @@
         </div>
     </main>
 </body>
-
 @endsection

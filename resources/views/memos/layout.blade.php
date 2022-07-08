@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>KOBAKEEP</title>
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+    @yield('head')
 </head>
 <body>
     

@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MemoController;
+use App\Http\Controllers\TrashController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,3 +16,4 @@ use App\Http\Controllers\MemoController;
 */
 
 Route::resource('memos', MemoController::class);
+Route::resource('trashes', TrashController::class);

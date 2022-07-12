@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -14,8 +15,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('memos', function (Blueprint $table) {
-            $table->string('created_at')->nullable(false)->change();
-            $table->string('deleted_at')->nullable(true)->change();
+            DB::statement("ALTER TABLE memos ALTER COLUMN created_at timestamp;");
+            DB::statement("ALTER TABLE memos ALTER COLUMN deleted_at timestamp;");
         });
     }
 
@@ -27,8 +28,8 @@ return new class extends Migration
     public function down()
     {
         Schema::table('memos', function (Blueprint $table) {
-            $table->string('created_at')->nullable(true)->change();
-            $table->string('deleted_at')->nullable(false)->change();
+            DB::statement("ALTER TABLE memos ALTER COLUMN created_at varchar(255);");
+            DB::statement("ALTER TABLE memos ALTER COLUMN deleted_at varchar(255);");
         });
     }
 };

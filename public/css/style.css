@@ -154,6 +154,12 @@ main {
     cursor: pointer;
 }
 
+.undo {
+    background-color: #008000;
+    cursor: pointer;
+}
+
+
 .update-button {
     background-color: #008000;
 }

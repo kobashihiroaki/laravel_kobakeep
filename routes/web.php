@@ -17,3 +17,4 @@ use App\Http\Controllers\TrashController;
 
 Route::resource('memos', MemoController::class);
 Route::resource('trashes', TrashController::class);
+Route::delete('/trash/{trashed_text}', 'TrashController@destroy')->name('trash.forcedelete');

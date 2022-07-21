@@ -33,3 +33,8 @@ createMemo.addEventListener('click', (e) => {
             break;
     }
 });
+
+const deleteButton = document.getElementsByClassName('delete-button');
+deleteButton.addEventListener('click', (e) => {
+    alert('本当に削除しますか？削除したらもう元には戻せませんよ。本当に大丈夫ですか？');
+});

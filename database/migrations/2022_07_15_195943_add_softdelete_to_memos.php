@@ -14,8 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('memos', function (Blueprint $table) {
-            $table->string('created_at')->nullable(false)->change();
-            $table->string('deleted_at')->nullable(true)->change();
+            $table->softDeletes();
         });
     }
 
@@ -27,8 +26,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('memos', function (Blueprint $table) {
-            $table->string('created_at')->nullable(true)->change();
-            $table->string('deleted_at')->nullable(false)->change();
+            //
         });
     }
 };

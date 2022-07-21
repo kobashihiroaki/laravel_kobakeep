@@ -14,8 +14,8 @@ class TrashController extends Controller
      */
     public function index()
     {
-        $memos = Memo::all();
-        return view('memos.trash',compact('memos'));
+        $trashes = Memo::onlyTrashed()->get();
+        return view('memos.trash',compact('trashes'));
     }
 
     /**
@@ -36,7 +36,7 @@ class TrashController extends Controller
      */
     public function store(Request $request)
     {
-        
+        //
     }
 
     /**
@@ -70,7 +70,7 @@ class TrashController extends Controller
      */
     public function update(Request $request, Memo $memo)
     {
-        
+        //
     }
 
     /**
@@ -81,7 +81,8 @@ class TrashController extends Controller
      */
     public function destroy(Memo $memo)
     {
-        
+        $memo->onlyTrashed()->where('id', $memo->id)->forcedelete();
+        return redirect()->route('trashes.index')
+                        ->with('success','trash deleted successfully');
     }
 }
-

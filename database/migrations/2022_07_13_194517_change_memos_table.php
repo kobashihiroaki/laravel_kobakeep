@@ -15,8 +15,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('memos', function (Blueprint $table) {
-            DB::statement("ALTER TABLE memos ALTER COLUMN created_at timestamp;");
-            DB::statement("ALTER TABLE memos ALTER COLUMN deleted_at timestamp;");
+            DB::statement('alter table memos modify column created_at timestamp not null;');
         });
     }
 
@@ -28,8 +27,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('memos', function (Blueprint $table) {
-            DB::statement("ALTER TABLE memos ALTER COLUMN created_at varchar(255);");
-            DB::statement("ALTER TABLE memos ALTER COLUMN deleted_at varchar(255);");
+            DB::statement('alter table memos modify column created_at timestamp null;');
         });
     }
 };

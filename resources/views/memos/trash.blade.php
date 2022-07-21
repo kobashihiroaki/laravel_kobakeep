@@ -1,5 +1,5 @@
 @extends('memos.layout')
-@section('content')
+@section('head')
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="/css/style.css">
     <script defer src="/src/main.js"></script>
 </head>
+@endsection
+@section('content')
 <body>
     <header>
         <a href="./">
@@ -23,13 +25,24 @@
                     <a href="./memos">メモ</a>
                 </li>
                 <li class="side-button">
-                    <a href="./trash">ゴミ箱</a>
+                    <a href="{{ route('trashes.index') }}">ゴミ箱</a>
                 </li>
             </ul>
         </div>
         <div class="container">
             <div id="list_area" class="list-area">
-                
+                @foreach ($trashes as $trash)
+                <div class="memo-content">
+                    <form id="delete{{$trash->id}}" action="{{ route('trash.forcedelete',$trash->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')    
+                    </form>
+                    <input value="{{ $trash->title }}" name="title">
+                    <input value="{{ $trash->content }}" name="content">
+                    <button form="delete{{$trash->id}}" class="delete-button">削除</button>
+                    <button class="undo">元に戻す</button>
+                </div>
+                @endforeach
             </div>
         </div>
     </main>

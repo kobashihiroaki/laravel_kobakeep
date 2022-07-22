@@ -37,7 +37,7 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/web.php'));
         });
 
-        Route::bind('trashed_text', function ($id) {
+        Route::bind('trash', function ($id) {
             return \App\Models\Memo::onlyTrashed()->find($id);
         });
     }

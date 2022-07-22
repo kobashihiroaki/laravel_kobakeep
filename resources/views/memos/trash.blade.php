@@ -33,14 +33,18 @@
             <div id="list_area" class="list-area">
                 @foreach ($trashes as $trash)
                 <div class="memo-content">
-                    <form id="delete{{$trash->id}}" action="{{ route('trash.forcedelete',$trash->id) }}" method="POST">
+                    <form id="delete{{$trash->id}}" action="{{ route('trash.force_delete',$trash->id) }}" method="POST">
                         @csrf
                         @method('DELETE')    
+                    </form>
+                    <form id="restore{{$trash->id}}" action="{{ route('trash.restore', $trash->id) }}" method="POST">
+                        @csrf
+                        @method('PATCH')
                     </form>
                     <input value="{{ $trash->title }}" name="title">
                     <input value="{{ $trash->content }}" name="content">
                     <button form="delete{{$trash->id}}" class="delete-button">削除</button>
-                    <button class="undo">元に戻す</button>
+                    <button form="restore{{$trash->id}}" class="undo">元に戻す</button>
                 </div>
                 @endforeach
             </div>

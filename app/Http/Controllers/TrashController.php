@@ -81,8 +81,15 @@ class TrashController extends Controller
      */
     public function destroy(Memo $memo)
     {
-        $memo->onlyTrashed()->where('id', $memo->id)->forcedelete();
+        $memo->forcedelete();
         return redirect()->route('trashes.index')
                         ->with('success','trash deleted successfully');
+    }
+
+    public function restore(Memo $memo)
+    {
+        $memo->onlyTrashed()->where('id', $memo->id)->restore();
+        return redirect()->route('trashes.index')
+                        ->with('success','memo restored successfully');
     }
 }

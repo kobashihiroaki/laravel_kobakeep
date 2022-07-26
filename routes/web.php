@@ -14,8 +14,14 @@ use App\Http\Controllers\TrashController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/', function () {
+    return view('welcome');
+});
 Route::resource('memos', MemoController::class);
 Route::resource('trashes', TrashController::class);
-Route::delete('/trashes/{trash}', [TrashController::class, 'destroy'])->name('trash.force_delete');
+Route::delete('/trashes/{trash}', 'TrashController@destroy')->name('trash.force_delete');
 Route::patch('/trashes/{trash}', [TrashController::class, 'restore'])->name('trash.restore');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -19,7 +19,7 @@ Route::get('/', function () {
 });
 Route::resource('memos', MemoController::class);
 Route::resource('trashes', TrashController::class);
-Route::delete('/trashes/{trash}', 'TrashController@destroy')->name('trash.force_delete');
+Route::delete('/trashes/{trash}', [TrashController::class, 'destroy'])->name('trash.force_delete');
 Route::patch('/trashes/{trash}', [TrashController::class, 'restore'])->name('trash.restore');
 
 Auth::routes();
